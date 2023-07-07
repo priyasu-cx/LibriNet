@@ -27,14 +27,14 @@ const loginUser = async (req, res) => {
 // @route   POST /api/auth/register
 // @access  Public
 const signupUser = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
 
     const userExists = await User.findOne({ email });
     if (userExists) {
         res.status(400).json({ msg: 'User already exists' });
         return;
     }
-    const user = await User.create({ name, email, password });
+    const user = await User.create({ name, email, password, phone, orders: [], cart: [], wishlist: [], address: '' });
 
     if (user) {
         generateToken(res, user._id);
@@ -42,6 +42,8 @@ const signupUser = async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            phone: user.phone,
+
         });
     } else{
         res.status(400).json({ msg: 'Invalid user data' });
