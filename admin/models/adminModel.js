@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -15,34 +15,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    orders: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Order',
-    }],
-    cart: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book',
-    }],
-    wishlist: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book',
-    }],
-    address: {
-        type: String,
-    },
-    phone: {
-        type: Number,
-        required: true,
-    },
-    status: {
-        type: String,
+    role: {
+        enum: ['admin', 'super-admin', 'delivery'],
     }
 }, {
     timestamps: true,
 });
 
 // hash password before saving to database
-userSchema.pre('save', async function (next) {
+adminSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         next();
     }
@@ -51,9 +32,9 @@ userSchema.pre('save', async function (next) {
 });
 
 // compare password
-userSchema.methods.matchPassword = async function (enteredPassword) {
+adminSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 }
 
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Admin', adminSchema, 'admins');
