@@ -34,9 +34,9 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    status: {
-        type: String,
-    }
+    // status: {
+    //     type: String,
+    // }
 }, {
     timestamps: true,
 });
