@@ -11,7 +11,7 @@ const Navbar = () => {
           <div className="mr-auto md:w-48 flex-shrink-0">
             <img
               className="h-8 md:h-10"
-              src="https://i.ibb.co/98pHdFq/2021-10-27-15h51-15.png"
+              src="https://i.imgur.com/ap5KdX0.png"
               alt=""
             />
           </div>
