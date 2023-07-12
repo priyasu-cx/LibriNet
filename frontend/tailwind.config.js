@@ -7,10 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-
+        "yellow-primary": "#FFD100",
+        "text-primary": "#333533"
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        sans: ["Archivo", "sans-serif"],
+        Archivo: ["Archivo", "sans-serif"],
+        Unica: ["Unica One", "cursive"],
       }
     },
   },
