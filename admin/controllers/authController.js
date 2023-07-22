@@ -20,6 +20,8 @@ const loginUser = async (req, res) => {
         });
     } else{
         res.status(400).json({ msg: 'Invalid Email/Password' });
+        // res.status(400);
+        // throw new Error('Invalid Email/Password');
     }
 };
 
@@ -32,6 +34,8 @@ const signupUser = async (req, res) => {
     const userExists = await User.findOne({ email });
     if (userExists) {
         res.status(400).json({ msg: 'Admin already exists' });
+        // res.status(400);
+        // throw new Error('Admin already exists');
         return;
     }
     const user = await User.create({ name, email, password, role });
@@ -47,6 +51,8 @@ const signupUser = async (req, res) => {
         });
     } else{
         res.status(400).json({ msg: 'Invalid admin data' });
+        // res.status(400);
+        // throw new Error('Invalid admin data');
     }
 };
 
@@ -98,6 +104,8 @@ const updateUserProfile = async (req, res) => {
         });
     }else{
         res.status(404).json({ msg: 'User not found' });
+        // res.status(404);
+        // throw new Error('User not found');
     }
 }
 

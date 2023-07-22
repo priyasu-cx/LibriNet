@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RiAdminFill } from "react-icons/ri";
 import { useLoginMutation } from "../slices/adminApiSlice";
 import { setCredentials } from "../slices/authSlice";
+import { toast } from "react-toastify";
 
 const Admin = () => {
   const [password, setPassword] = useState("");
@@ -17,8 +18,9 @@ const Admin = () => {
   const {userInfo} = useSelector((state) => state.auth);
 
   useEffect(() => {
+    document.title = "Admin Login";
     if(userInfo) {
-      navigate("/");
+      navigate("/admin/dashboard");
     }
   }, [navigate, userInfo]);
 
@@ -29,9 +31,10 @@ const Admin = () => {
       const res = await login({email, password}).unwrap();
       console.log(res);
       dispatch(setCredentials({ ...res}));
-      navigate("/");
+      navigate("/admin/dashboard");
     }catch(err) {
-      console.log(err.message);
+      // console.log(err.data.msg);
+      toast.error(err.data.msg);
     }
   };
 

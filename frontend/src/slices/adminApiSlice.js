@@ -14,10 +14,10 @@ export const adminApiSlice = apiSlice.injectEndpoints({
         logout: builder.mutation({
             query: () => ({
                 url: `${ADMIN_API_URL}/logout`,
-                method: "POST",
+                method: "GET",
             })
         }),
     })
 });
 
-export const { useLoginMutation, useRegisterMutation } = adminApiSlice;
+export const { useLoginMutation, useLogoutMutation } = adminApiSlice;

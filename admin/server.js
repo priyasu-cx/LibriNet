@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const authRouter = require('./routes/authRoutes');
 const bookRouter = require('./routes/bookRoutes');
 const cookieParser = require('cookie-parser');
+const { errorHandler } = require('./middleware/errorMiddleware');
 
 //express app
 const app = express();
@@ -26,6 +27,9 @@ app.use(cookieParser());
 // routes
 app.get('/', (req, res) => res.status(200).json({ msg: 'Welcome to the LibriNet Admin API' }));
 
+// app.use(notFound);
+
+
 // connect to mongodb
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -34,6 +38,9 @@ mongoose.connect(process.env.MONGO_URI)
     })
     .catch(err => console.log(err));
 
+
 app.use('/api/auth', authRouter);
 
 app.use('/api/auth/book', bookRouter);
+
+app.use(errorHandler);
