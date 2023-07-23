@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useLogoutMutation } from "../slices/adminApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import { useLogoutMutation } from "../../slices/adminApiSlice";
+import { setCredentials } from "../../slices/authSlice";
 
 const AdminDashboard = () => {
   const[logout] = useLogoutMutation();

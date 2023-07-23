@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RiAdminFill } from "react-icons/ri";
-import { useLoginMutation } from "../slices/adminApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import { useLoginMutation } from "../../slices/adminApiSlice";
+import { setCredentials } from "../../slices/authSlice";
 import { toast } from "react-toastify";
 
 const Admin = () => {
@@ -13,26 +13,26 @@ const Admin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const[login] = useLoginMutation();
+  const [login] = useLoginMutation();
 
-  const {userInfo} = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     document.title = "Admin Login";
-    if(userInfo) {
+    if (userInfo) {
       navigate("/admin/dashboard");
     }
   }, [navigate, userInfo]);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
-      const res = await login({email, password}).unwrap();
-      console.log(res);
-      dispatch(setCredentials({ ...res}));
+    try {
+      const res = await login({ email, password }).unwrap();
+      // console.log(res);
+      dispatch(setCredentials({ ...res }));
       navigate("/admin/dashboard");
-    }catch(err) {
+    } catch (err) {
       // console.log(err.data.msg);
       toast.error(err.data.msg);
     }
@@ -79,6 +79,7 @@ const Admin = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
             <button
               className="bg-gradient-to-b from-gray-600 to-black rounded-lg font-medium p-2 md:p-4 text-white uppercase w-full"
               type="submit"

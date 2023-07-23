@@ -2,10 +2,16 @@ import { FaSearch, FaRegHeart } from "react-icons/fa";
 import { MdOutlineAccountCircle, MdOutlineShoppingCart } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.auth);
   // console.log(userInfo);
+  const navigate = useNavigate();
+
+  const loginScreen = () => {
+    navigate("/login");
+  };
 
   return (
     <>
@@ -15,21 +21,17 @@ const Navbar = () => {
           <div className="mr-auto md:w-48 flex-shrink-0">
             {/* check if userinfo is null */}
 
-            {!userInfo ? (
-              <a href="/">
+            <a href={userInfo == null ? "/admin/dashboard" : "/"}>
               <img
                 className="h-8 md:h-10"
-                src="https://i.imgur.com/ap5KdX0.png"
+                src={
+                  userInfo
+                    ? "https://i.imgur.com/gkfHhLj.png"
+                    : "https://i.imgur.com/ap5KdX0.png"
+                }
                 alt=""
-              /></a>
-            ) : (
-              <a href="/admin/dashboard">
-              <img
-                className="h-8 md:h-10"
-                src="https://i.imgur.com/gkfHhLj.png"
-                alt=""
-              /></a>
-            )}
+              />
+            </a>
           </div>
           {/* search */}
           <div className="w-full max-w-xs xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md hidden xl:flex items-center">
@@ -56,40 +58,35 @@ const Navbar = () => {
           </div>
           {/* Buttons */}
           {/* Only show when user signed in */}
-          {userInfo == null
-            ? () => {
-                <nav className="contents">
-                  <ul className="ml-4 xl:48 flex items-center justify-end gap-2">
-                    <li className="ml-2 lg:ml-4 relative inline-block">
-                      <MdOutlineAccountCircle
-                        className="text-gray-400"
-                        size={20}
-                      />
-                    </li>
-                    <li className="ml-2 lg:ml-4 relative inline-block">
-                      <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                        3
-                      </div>
-                      <FaRegHeart className="text-gray-400" size={20} />
-                    </li>
-                    <li className="ml-2 lg:ml-4 relative inline-block">
-                      <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                        12
-                      </div>
-                      <MdOutlineShoppingCart
-                        className="text-gray-400"
-                        size={20}
-                      />
-                    </li>
-                  </ul>
-                </nav>;
-              }
-            : () => {}}
-
-          <button className="ml-4 hidden sm:flex items-center justify-center gap-2 bg-yellow-400 text-white font-bold px-4 py-2 rounded-md">
-            <MdOutlineAccountCircle size={20} />
-            <span className="text-sm">Sign In</span>
-          </button>
+          {userInfo != null ? (
+            <nav className="contents">
+              <ul className="ml-4 xl:48 flex items-center justify-end gap-2">
+                <li className="ml-2 lg:ml-4 relative inline-block">
+                  <MdOutlineAccountCircle className="text-gray-400" size={20} />
+                </li>
+                <li className="ml-2 lg:ml-4 relative inline-block">
+                  <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
+                    3
+                  </div>
+                  <FaRegHeart className="text-gray-400" size={20} />
+                </li>
+                <li className="ml-2 lg:ml-4 relative inline-block">
+                  <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
+                    12
+                  </div>
+                  <MdOutlineShoppingCart className="text-gray-400" size={20} />
+                </li>
+              </ul>
+            </nav>
+          ) : (
+            <button
+              className="ml-4 hidden sm:flex items-center justify-center gap-2 bg-yellow-400 text-white font-bold px-4 py-2 rounded-md"
+              onClick={loginScreen}
+            >
+              <MdOutlineAccountCircle size={20} />
+              <span className="text-sm">Sign In</span>
+            </button>
+          )}
 
           {/* Cart */}
           {/* Only show when user signed in */}
