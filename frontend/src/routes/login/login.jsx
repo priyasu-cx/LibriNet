@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiFillMail } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

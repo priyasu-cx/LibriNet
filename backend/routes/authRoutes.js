@@ -11,6 +11,8 @@ const {
   getUserProfile,
   updateUserProfile,
 } = require("../controllers/authController");
+const magicLogin = require("../controllers/magicLoginController");
+const passport = require("passport");
 
 router.get("/", (req, res) =>
   res.json({ msg: "Welcome to the LibriNet Auth API" })
@@ -18,6 +20,19 @@ router.get("/", (req, res) =>
 
 // login route
 router.post("/login", loginUser);
+
+// magic login route
+router.post("/magiclogin", magicLogin.send);
+
+// magic login callback route
+router.get(
+  "/magiclogin/callback",
+  passport.authenticate("magiclogin", {
+    session: false,
+    failureRedirect: "/login",
+    successReturnToOrRedirect: "http://localhost:3000/", // redirect to homepage on success
+  })
+);
 
 // signup route
 router.post("/register", signupUser);

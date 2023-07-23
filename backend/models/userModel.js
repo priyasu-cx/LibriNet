@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
     },
     orders: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -32,7 +31,6 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: Number,
-        required: true,
     },
     // status: {
     //     type: String,

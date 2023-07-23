@@ -1,5 +1,7 @@
 const User = require('../models/userModel');
+
 const generateToken = require('../utils/generateToken');
+const { verify } = require('jsonwebtoken');
 
 // @desc    Login User
 // @route   POST /api/auth/login
