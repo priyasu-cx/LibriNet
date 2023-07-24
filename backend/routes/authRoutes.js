@@ -10,6 +10,7 @@ const {
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  magicLoginCallback,
 } = require("../controllers/authController");
 const magicLogin = require("../controllers/magicLoginController");
 const passport = require("passport");
@@ -25,14 +26,18 @@ router.post("/login", loginUser);
 router.post("/magiclogin", magicLogin.send);
 
 // magic login callback route
-router.get(
-  "/magiclogin/callback",
-  passport.authenticate("magiclogin", {
-    session: false,
-    failureRedirect: "/login",
-    successReturnToOrRedirect: "http://localhost:3000/", // redirect to homepage on success
-  })
-);
+// router.get(
+//   "/magiclogin/callback",
+//   passport.authenticate("magiclogin", {
+//     session: false,
+//     failureRedirect: "/login",
+//     successReturnToOrRedirect: "http://localhost:3000/", // redirect to homepage on success
+//   }, (req, res) => {
+//     res.redirect("http://localhost:3000/");
+
+//   })
+// );
+router.get("/magiclogin/callback", magicLoginCallback);
 
 // signup route
 router.post("/register", signupUser);

@@ -1,13 +1,16 @@
 const passport = require("passport");
+const passportJWT = require("passport-jwt");
 const MagicLoginStrategy = require("passport-magic-login").default;
 var SibApiV3Sdk = require("sib-api-v3-sdk");
 const User = require("../models/userModel");
-const generateToken = require("../utils/generateToken");
+
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
 
 // verify if user exists
 const getOrCreateUserWithEmail = async (payload) => {
   // check if user exists if not create new or return user
-  console.log(payload);
+  // console.log(payload);
   const userExists = await User.findOne({ email: payload.destination });
   if (userExists) {
     return userExists;
@@ -67,16 +70,14 @@ const magicLogin = new MagicLoginStrategy({
 
   sendMagicLink: async (destination, href) => {
     const link = "http://localhost:5000" + href;
-    console.log("Sending Magic Link to", destination,"link", link);
+    console.log("Sending Magic Link to", destination, "link", link);
     await sendEmail({ name: "LibriNet", href: href }, destination);
   },
 
   verify: async (payload, callback) => {
     getOrCreateUserWithEmail(payload)
       .then((user) => {
-        // callback(null, user);
-        // console.log(user);
-        callback(user, user);
+        callback(null, user, { message: "Logged In Successfully"});
       })
       .catch((err) => {
         callback(err);
@@ -84,10 +85,28 @@ const magicLogin = new MagicLoginStrategy({
   },
 
   jwtOptions: {
-    expiresIn: "5m",
+    expiresIn: "1d",
   },
 });
 
 passport.use(magicLogin);
+
+// passport.use(
+//   new JWTStrategy(
+//     {
+//       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+//       secretOrKey: process.env.JWT_SECRET_KEY,
+//     },
+//     function (jwtPayload, cb) {
+//       return User.findOne({ email: jwtPayload.email })
+//         .then((user) => {
+//           return cb(null, user);
+//         })
+//         .catch((err) => {
+//           return cb(err);
+//         });
+//     }
+//   )
+// );
 
 module.exports = magicLogin;

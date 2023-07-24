@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.2",
     "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
     "passport-magic-login": "^1.2.2",
     "sib-api-v3-sdk": "^8.5.0"
   }
