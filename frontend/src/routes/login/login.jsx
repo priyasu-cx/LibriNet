@@ -1,19 +1,38 @@
 import { useState, useEffect } from "react";
 import { AiFillMail } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useMagicloginMutation } from "../../slices/userApiSlice";
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState("");
+  const [destination, setDestination] = useState("");
+
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const [magiclogin] = useMagicloginMutation();
 
   useEffect(() => {
     document.title = "Login";
-  }, []);
+    if(userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!email) {
+    if(!destination) {
       toast.error("Please enter your email");
       return;
+    }
+    try{
+      const res = magiclogin({destination}).unwrap();
+      console.log(res);
+      toast.success("Check your email for the magic link");
+    } catch(err) {
+      console.log(err);
+      toast.error(err.data.msg);
     }
   };
 
@@ -39,7 +58,7 @@ const LoginScreen = () => {
                   id="email"
                   className="bg-transparent pl-12 py-2 md:py-4 focus:outline-none w-full"
                   placeholder="Email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
 

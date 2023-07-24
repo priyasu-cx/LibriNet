@@ -70,9 +70,10 @@ const magicLoginCallback = async (req, res, next) => {
     {
       session: false,
       failureRedirect: "/login",
-      successReturnToOrRedirect: "http://localhost:3000/", // redirect to homepage on success
+      successRedirect: "/",
     },
     (err, user, info) => {
+      // res.redirect("http://localhost:3000/");
       if (err || !user) {
         return res.status(400).json({
           message: "Something is not right",
@@ -84,6 +85,7 @@ const magicLoginCallback = async (req, res, next) => {
           res.send(err);
         }
         const token = generateToken(res, user._id);
+        res.successReturnToOrRedirect = "http://localhost:3000/";
         return res.status(200).json({ user, token });
       });
     }

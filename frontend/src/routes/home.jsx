@@ -1,6 +1,12 @@
 import image from "../assets/Geometry.png";
+import { useEffect } from "react";
 
 const Home = () => {
+  // useEffect(() => {
+  //   document.title = "LibriNET | Home";
+
+  // }, []);
+
   return (
     <>
     {/* Top Section */}

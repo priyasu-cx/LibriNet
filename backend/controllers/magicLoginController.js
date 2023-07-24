@@ -16,7 +16,7 @@ const getOrCreateUserWithEmail = async (payload) => {
     return userExists;
   } else {
     const user = await User.create({
-      name: payload.name,
+      name: "Anonymous",
       email: payload.destination,
       password: "",
       phone: "",
