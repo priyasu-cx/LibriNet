@@ -5,10 +5,10 @@ const USER_API_URL = "/api/auth";
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     magiclogin: builder.mutation({
-        query: (credentials) => ({
-            url: `${USER_API_URL}/magiclogin`,
-            method: "POST",
-            body: credentials,
+        query: (token) => ({
+            url: `${USER_API_URL}/magiclogin/callback`,
+            method: "GET",
+            params: { token: token }
         }),
     }),
   }),

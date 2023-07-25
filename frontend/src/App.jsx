@@ -7,6 +7,7 @@ import Home from "./routes/home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginScreen from "./routes/login/login";
+import MagicLoginCallback from "./routes/login/magicLogin";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact Component={Home}/>
           <Route path="/login" exact Component={LoginScreen}/>
+          <Route path="/magiclogin" exact Component={MagicLoginCallback}/>
           <Route path="/admin" Component={Admin}/>
           <Route path="/admin/dashboard" Component={AdminDashboard}/>
           <Route path="*" element={<h1>Not Found</h1>}/>
