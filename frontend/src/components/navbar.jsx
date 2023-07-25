@@ -15,13 +15,13 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="bg-white border-b">
+      <header className="bg-transparent bg-book-cover border-b">
         <div className="container mx-auto px-4 py-8 flex items-center">
           {/* logo */}
           <div className="mr-auto md:w-48 flex-shrink-0">
             {/* check if userinfo is null */}
 
-            <a href={userInfo == null ? "/admin/dashboard" : "/"}>
+            <a href={userInfo ? userInfo.isAdmin ? "/admin/dashboard": "/" : "/"}>
               <img
                 className="h-8 md:h-10"
                 src={
@@ -66,13 +66,13 @@ const Navbar = () => {
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                    {/* {userInfo.cart.length} */}
+                    {userInfo.cart.length}
                   </div>
                   <FaRegHeart className="text-gray-400" size={20} />
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                    {/* {userInfo.wishlist.length} */}
+                    {userInfo.wishlist.length}
                   </div>
                   <MdOutlineShoppingCart className="text-gray-400" size={20} />
                 </li>

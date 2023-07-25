@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Admin from "./routes/admin/AdminLogin";
 import AdminDashboard from "./routes/admin/AdminDashboardScreen";
-import Home from "./routes/home";
+import Home from "./routes/home/home";
 import "react-toastify/dist/ReactToastify.css";
 import LoginScreen from "./routes/login/LoginScreen";
 import MagicLoginCallback from "./routes/login/magicLogin";

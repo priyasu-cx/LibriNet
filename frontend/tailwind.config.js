@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: () => ({
+        "book-cover": "url('https://i.imgur.com/PMbASLPl.png')",
+      }),
       colors: {
         "yellow-primary": "#FFD100",
         "text-primary": "#333533"

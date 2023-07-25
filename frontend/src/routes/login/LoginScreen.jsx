@@ -38,8 +38,7 @@ const LoginScreen = () => {
 
   return (
     <>
-      <div className="">
-        <div className="bg-white h-auto py-24 overflow-hidden flex items-center justify-center">
+        <div className="bg-book-cover h-auto py-24 overflow-hidden flex items-center justify-center">
           <div className="bg-white lg:w-5/12 md:6/12 w-10/12 shadow-2xl rounded-lg">
             <div>
               <h1 className="font-bold text-2xl md:text-4xl text-center mt-20">
@@ -71,8 +70,7 @@ const LoginScreen = () => {
               </button>
             </form>
           </div>
-        </div>
-      </div>
+        </div>      
     </>
   );
 };
