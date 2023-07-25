@@ -1,13 +1,14 @@
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Admin from "./routes/admin/admin";
-import AdminDashboard from "./routes/admin/adminDashboard";
-import Home from "./routes/home";
 import { ToastContainer } from "react-toastify";
+import Admin from "./routes/admin/AdminLogin";
+import AdminDashboard from "./routes/admin/AdminDashboardScreen";
+import Home from "./routes/home";
 import "react-toastify/dist/ReactToastify.css";
-import LoginScreen from "./routes/login/login";
+import LoginScreen from "./routes/login/LoginScreen";
 import MagicLoginCallback from "./routes/login/magicLogin";
+import ProfileScreen from "./routes/profile/ProfileScreen";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact Component={Home}/>
           <Route path="/login" exact Component={LoginScreen}/>
+          <Route path="/profile" exact Component={ProfileScreen}/>
           <Route path="/magiclogin" exact Component={MagicLoginCallback}/>
           <Route path="/admin" Component={Admin}/>
           <Route path="/admin/dashboard" Component={AdminDashboard}/>

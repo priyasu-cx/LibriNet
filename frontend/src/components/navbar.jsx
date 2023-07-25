@@ -62,7 +62,7 @@ const Navbar = () => {
             <nav className="contents">
               <ul className="ml-4 xl:48 flex items-center justify-end gap-2">
                 <li className="ml-2 lg:ml-4 relative inline-block">
-                  <MdOutlineAccountCircle className="text-gray-400" size={20} />
+                  <a href="\profile"><MdOutlineAccountCircle className="text-gray-400" size={20} /></a>
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">

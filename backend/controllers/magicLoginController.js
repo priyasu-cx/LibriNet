@@ -44,7 +44,7 @@ const sendEmail = async (body, destination) => {
     subject: "LibriNet Login",
     to: [{ email: destination, name: body.name }],
     sender: { email: "priyasuguin4@gmail.com", name: "LibriNet" },
-    htmlcontent: `<html><body><h1>LibriNet</h1><p>Click <a href="http://localhost:5000${body.href}">here</a> to login.</p></body></html><br>http://localhost:5000${body.href}`,
+    htmlcontent: `<html><body><h1>LibriNet</h1><p>Click <a href="http://localhost:3000${body.href}">here</a> to login.</p></body></html><br>http://localhost:3000${body.href}`,
     params: {
       name: body.name,
       href: body.href,
@@ -66,10 +66,10 @@ const sendEmail = async (body, destination) => {
 // Magic Login Strategy
 const magicLogin = new MagicLoginStrategy({
   secret: process.env.MAGIC_LOGIN_SECRET,
-  callbackUrl: "/api/auth/magiclogin/callback",
+  callbackUrl: "/magiclogin",
 
   sendMagicLink: async (destination, href) => {
-    const link = "http://localhost:5000" + href;
+    const link = "http://localhost:3000" + href;
     console.log("Sending Magic Link to", destination, "link", link);
     await sendEmail({ name: "LibriNet", href: href }, destination);
   },

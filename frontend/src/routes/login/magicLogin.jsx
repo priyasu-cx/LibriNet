@@ -16,7 +16,7 @@ const MagicLoginCallback = () => {
     console.log(token);
     try {
       const res = await magiclogin({ token }).unwrap();
-      dispatch(setCredentials({ ...res }));
+      dispatch(setCredentials({ ...res.user }));
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -37,7 +37,7 @@ const MagicLoginCallback = () => {
 
     // if verified, dispatch action to set credentials
     // else redirect to login page
-});
+},[]);
 
   return (
     <div>

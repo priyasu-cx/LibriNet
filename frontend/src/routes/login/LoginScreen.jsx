@@ -3,7 +3,7 @@ import { AiFillMail } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useMagicloginMutation } from "../../slices/userApiSlice";
+import { useSendemailMutation } from "../../slices/userApiSlice";
 
 const LoginScreen = () => {
   const [destination, setDestination] = useState("");
@@ -11,7 +11,7 @@ const LoginScreen = () => {
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.auth);
 
-  const [magiclogin] = useMagicloginMutation();
+  const [sendemail] = useSendemailMutation();
 
   useEffect(() => {
     document.title = "Login";
@@ -27,7 +27,7 @@ const LoginScreen = () => {
       return;
     }
     try{
-      const res = magiclogin({destination}).unwrap();
+      const res = sendemail({destination}).unwrap();
       console.log(res);
       toast.success("Check your email for the magic link");
     } catch(err) {
