@@ -12,7 +12,7 @@ const BookCarousel = () => {
   return(
     <>
       <div className="flex items-center justify-center">
-        <h1 className="font-Unica text-3xl md:text-7xl py-5 mt-6 text-yellow-primary">
+        <h1 className="font-Unica text-3xl md:text-7xl lg:mt-16 mt-5 text-yellow-primary">
           Trending Books
         </h1>
       </div>
