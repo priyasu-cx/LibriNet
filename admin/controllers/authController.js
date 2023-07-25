@@ -17,6 +17,7 @@ const loginUser = async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            isAdmin: true,
         });
     } else{
         res.status(400).json({ msg: 'Invalid Email/Password' });

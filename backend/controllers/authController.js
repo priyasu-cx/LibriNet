@@ -85,8 +85,18 @@ const magicLoginCallback = async (req, res, next) => {
           res.send(err);
         }
         const token = generateToken(res, user._id);
-        res.successReturnToOrRedirect = "http://localhost:3000/";
-        return res.status(200).json({ user, token });
+        return res.status(200).json({ 
+          user: {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            cart: user.cart,
+            wishlist: user.wishlist,
+            address: user.address,
+          },
+          token
+         });
       });
     }
   )(req, res, next);
@@ -112,6 +122,10 @@ const getUserProfile = async (req, res) => {
     _id: req.user._id,
     name: req.user.name,
     email: req.user.email,
+    phone: req.user.phone,
+    cart: req.user.cart,
+    wishlist: req.user.wishlist,
+    address: req.user.address,
   };
 
   res.status(200).json(user);
@@ -124,6 +138,10 @@ const updateUserProfile = async (req, res) => {
   const user = await User.findById(req.user._id);
   if (user) {
     user.name = req.body.name || user.name;
+    user.phone = req.body.phone || user.phone;
+    user.address = req.body.address || user.address;
+    user.wishlist = req.body.wishlist || user.wishlist;
+    user.cart = req.body.cart || user.cart;
 
     if (req.body.password) {
       user.password = req.body.password;
@@ -136,6 +154,10 @@ const updateUserProfile = async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      phone: updatedUser.phone,
+      cart: updatedUser.cart,
+      wishlist: updatedUser.wishlist,
+      address: updatedUser.address,
     });
   } else {
     res.status(404).json({ msg: "User not found" });

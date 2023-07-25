@@ -11,6 +11,10 @@ export default defineConfig({
         target: 'http://localhost:5000',
         changeOrigin: true,
       },
+      '/admin/api': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+      }
     }
   },
 })

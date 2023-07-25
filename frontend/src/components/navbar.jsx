@@ -26,7 +26,7 @@ const Navbar = () => {
                 className="h-8 md:h-10"
                 src={
                   userInfo
-                    ? "https://i.imgur.com/gkfHhLj.png"
+                    ? userInfo.isAdmin ? "https://i.imgur.com/gkfHhLj.png": "https://i.imgur.com/ap5KdX0.png"
                     : "https://i.imgur.com/ap5KdX0.png"
                 }
                 alt=""
@@ -58,7 +58,7 @@ const Navbar = () => {
           </div>
           {/* Buttons */}
           {/* Only show when user signed in */}
-          {userInfo != null ? (
+          {userInfo != null && !userInfo.isAdmin ? (
             <nav className="contents">
               <ul className="ml-4 xl:48 flex items-center justify-end gap-2">
                 <li className="ml-2 lg:ml-4 relative inline-block">
@@ -66,13 +66,13 @@ const Navbar = () => {
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                    3
+                    {/* {userInfo.cart.length} */}
                   </div>
                   <FaRegHeart className="text-gray-400" size={20} />
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                    12
+                    {/* {userInfo.wishlist.length} */}
                   </div>
                   <MdOutlineShoppingCart className="text-gray-400" size={20} />
                 </li>
@@ -90,12 +90,12 @@ const Navbar = () => {
 
           {/* Cart */}
           {/* Only show when user signed in */}
-          {!userInfo ?? (
+          {userInfo !=null && !userInfo.isAdmin? (
             <div className="ml-4 hidden sm:flex flex-col font-bold">
               <span className="text-sm text-gray-400">Your Cart</span>
               <span className="text-sm">$2,876.00</span>
             </div>
-          )}
+          ): null}
         </div>
       </header>
       {/* Search Mobile */}

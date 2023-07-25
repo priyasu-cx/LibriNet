@@ -39,8 +39,8 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.log(err));
 
 
-app.use('/api/auth', authRouter);
+app.use('/admin/api/auth', authRouter);
 
-app.use('/api/auth/book', bookRouter);
+app.use('/admin/api/auth/book', bookRouter);
 
 app.use(errorHandler);

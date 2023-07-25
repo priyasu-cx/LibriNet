@@ -14,7 +14,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     document.title = "Admin Dashboard";
-    if(!userInfo) {
+    if(userInfo == null) {
       navigate("/");
     }
   }, [navigate, userInfo]);

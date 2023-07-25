@@ -20,7 +20,8 @@ const Admin = () => {
   useEffect(() => {
     document.title = "Admin Login";
     if (userInfo) {
-      navigate("/admin/dashboard");
+      userInfo.isAdmin ?
+      navigate("/admin/dashboard") : navigate("/");
     }
   }, [navigate, userInfo]);
 
