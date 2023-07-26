@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginScreen from "./routes/login/LoginScreen";
 import MagicLoginCallback from "./routes/login/magicLogin";
 import ProfileScreen from "./routes/profile/ProfileScreen";
+import BookGallery from "./routes/books/BookGallery";
+import BookDetails from "./routes/books/components/BookDetails";
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           <Route path="/" exact Component={Home}/>
           <Route path="/login" exact Component={LoginScreen}/>
           <Route path="/profile" exact Component={ProfileScreen}/>
+          <Route path="/books" exact Component={BookGallery}/>
+          <Route path="/books/details" exact Component={BookDetails}/>
           <Route path="/magiclogin" exact Component={MagicLoginCallback}/>
           <Route path="/admin" Component={Admin}/>
           {/* Admin Routes */}
