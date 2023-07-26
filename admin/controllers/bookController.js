@@ -68,9 +68,23 @@ const updateBook = async (req, res) => {
     }
 };
 
+// @desc    Delete Book
+// @route   DELETE /api/auth/book/:bookno
+// @access  Private
+const deleteBook = async (req, res) => {
+    const book = await Book.findOne({ bookno: req.params.bookno });
+    if (book) {
+        await book.deleteOne();
+        res.json({ msg: 'Book removed' });
+    } else {
+        res.status(404).json({ msg: 'Book not found' });
+    }
+}
+
 module.exports = {
     addBook,
     getAllBooks,
     getBookByName,
     updateBook,
+    deleteBook
 };

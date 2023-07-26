@@ -17,7 +17,27 @@ export const adminApiSlice = apiSlice.injectEndpoints({
                 method: "GET",
             })
         }),
+        addBook: builder.mutation({
+            query: (book) => ({
+                url: `${ADMIN_API_URL}/book/add`,
+                method: "POST",
+                body: book,
+            }),
+        }),
+        updateBook: builder.mutation({
+            query: (book) => ({
+                url: `${ADMIN_API_URL}/book`,
+                method: "PUT",
+                body: book,
+            })
+        }),
+        deleteBook: builder.mutation({
+            query: (bookno) => ({
+                url: `${ADMIN_API_URL}/book/${bookno}`,
+                method: "DELETE",                
+            })
+        })
     })
 });
 
-export const { useLoginMutation, useLogoutMutation } = adminApiSlice;
+export const { useLoginMutation, useLogoutMutation, useAddBookMutation, useUpdateBookMutation, useDeleteBookMutation } = adminApiSlice;

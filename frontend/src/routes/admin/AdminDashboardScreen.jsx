@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../../slices/adminApiSlice";
 import { setCredentials } from "../../slices/authSlice";
 import { HiOutlineLogout } from "react-icons/hi";
-import {
-  Tab,
-  initTE,
-} from "tw-elements";
-import BookTable from "./components/bookTable";
+import { Tab, initTE } from "tw-elements";
 import AdminTab1 from "./AdminTab1";
 
 const AdminDashboard = () => {
@@ -87,7 +83,7 @@ const AdminDashboard = () => {
           >
             Orders & Payments
           </a>
-        </li>        
+        </li>
       </ul>
 
       {/* <!--Tabs content--> */}
@@ -125,7 +121,10 @@ const AdminDashboard = () => {
           className="px-4 py-2 bg-yellow-primary text-black rounded-lg shadow-md hover:bg-red-600 focus:outline-none"
           onClick={handleLogout}
         >
-          Logout
+          <span className="flex items-center justify-center gap-4 px-4">
+            <HiOutlineLogout />
+            <p>Logout</p>
+          </span>
         </button>
       </section>
     </>
