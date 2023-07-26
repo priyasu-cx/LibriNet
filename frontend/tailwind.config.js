@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./index.html",
@@ -20,6 +22,6 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin.cjs")],
 }
 
