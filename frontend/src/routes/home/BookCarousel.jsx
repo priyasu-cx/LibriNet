@@ -16,7 +16,7 @@ const BookCarousel = () => {
           Trending Books
         </h1>
       </div>
-      <div className=" rounded-xl shadow-lg border-yellow-primary border m-5 lg:m-20  px-10 pt-16 pb-10 text-white">
+      <div className="rounded-3xl shadow-lg border-yellow-primary border m-5 lg:m-20 w-4/5 px-10 pt-16 pb-10 text-white">
         <Swiper
           modules={[Pagination]}
           slidesPerView={1}

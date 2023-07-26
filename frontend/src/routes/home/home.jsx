@@ -34,7 +34,7 @@ const Home = () => {
       </section>
 
       {/* Books Section */}
-      <section className="flex flex-col mx-auto bg-black">
+      <section className="flex flex-col items-center justify-center mx-auto bg-black">
         <BookCarousel />
       </section>
 

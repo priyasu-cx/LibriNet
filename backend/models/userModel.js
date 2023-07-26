@@ -19,11 +19,11 @@ const userSchema = new mongoose.Schema({
         ref: 'Order',
     }],
     cart: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Book',
     }],
     wishlist: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Book',
     }],
     address: {

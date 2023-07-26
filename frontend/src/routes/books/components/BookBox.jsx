@@ -1,12 +1,12 @@
-import React from "react";
 import PropTypes from "prop-types";
-import c from "classnames";
+import { useNavigate } from "react-router-dom";
 
-const BookBox = (book) => {
+const BookBox = () => {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center pb-10 justify-center">
+    <div className="flex flex-col items-center py-10 justify-center" onClick={()=>navigate("/books/details")}>
       <img
-        className="h-64 rounded-lg object-cover hover:backdrop-blur-lg"
+        className="h-96 rounded-lg object-cover hover:backdrop-blur-lg"
         src="https://www.dramaticpublishing.com/media/catalog/product/cache/1/image/300x436/9df78eab33525d08d6e5fb8d27136e95/j/u/jungle_book_cover_j24000.jpg"
         alt="avatar"
       />

@@ -3,6 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/authRoutes');
+const bookRouter = require('./routes/bookRoutes');
+const orderRouter = require('./routes/orderRoutes');
 const cookieParser = require('cookie-parser');
 
 //express app
@@ -34,3 +36,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.log(err));
 
 app.use('/api/auth', authRouter);
+
+app.use('/api/books', bookRouter);
+
+app.use('/api/', orderRouter);
