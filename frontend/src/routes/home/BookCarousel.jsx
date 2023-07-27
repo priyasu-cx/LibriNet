@@ -8,6 +8,23 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const BookCarousel = () => {
+  const books = [
+    {
+      name: "Jungle Book",
+      image: "https://i.imgur.com/xLpyU6X.jpg",
+      author: "Rudyard Kipling"
+    },
+    {
+      name: "Ikigai",
+      image: "https://i.imgur.com/SWdYxZw.jpg",
+      author: "Hector Garcia"
+    },
+    {
+      name: "The Alchemist",
+      image: "https://i.imgur.com/YLlR1fR.jpg",
+      author: "Paulo Coelho"
+    }
+  ]
 
   return(
     <>
@@ -47,9 +64,11 @@ const BookCarousel = () => {
           }}
           className="mySwiper"
         >
-            <SwiperSlide><BookBox/></SwiperSlide>
-            <SwiperSlide><BookBox/></SwiperSlide>
-            <SwiperSlide><BookBox/></SwiperSlide>
+          {books.map((book, idx) => (
+            <SwiperSlide key={idx}>
+              <BookBox book={book} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </>

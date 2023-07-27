@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/login" exact Component={LoginScreen}/>
           <Route path="/profile" exact Component={ProfileScreen}/>
           <Route path="/books" exact Component={BookGallery}/>
-          <Route path="/books/details" exact Component={BookDetails}/>
+          <Route path="/books/:bookno" exact Component={BookDetails}/>
           <Route path="/magiclogin" exact Component={MagicLoginCallback}/>
           <Route path="/admin" Component={Admin}/>
           {/* Admin Routes */}

@@ -89,7 +89,7 @@ const AdminDashboard = () => {
       {/* <!--Tabs content--> */}
       <div className="mb-6">
         <div
-          className="hidden opacity-100 overflow-scroll transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+          className="hidden opacity-100 overflow-auto transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-home01"
           role="tabpanel"
           aria-labelledby="tabs-home-tab01"

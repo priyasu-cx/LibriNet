@@ -19,6 +19,7 @@ const BookTable = () => {
     author: "",
     price: "",
     stock: "",
+    image: "",
   });
   const [editIdx, setEditIdx] = useState(-1);
 
@@ -175,7 +176,21 @@ const BookTable = () => {
                     }
                   />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.image}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <input
+                    disabled={editIdx !== idx}
+                    className="border-1 rounded-lg px-4 py-2 w-full bg-transparent"
+                    type="text"
+                    name="author"
+                    placeholder={item.image}
+                    onChange={(e) =>
+                      setNewBook({
+                        ...newbook,
+                        image: e.target.value || item.image,
+                      })
+                    }
+                  />
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <input
                     disabled={editIdx !== idx}

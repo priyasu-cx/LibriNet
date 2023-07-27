@@ -2,17 +2,17 @@ import { useNavigate } from "react-router-dom";
 
 const BookGridComponent = (book) => {
   const navigate = useNavigate();
-  console.log(book);
+  // console.log(book);
   return (
     <div
       className="lg:w-1/6 md:w-1/3 p-4 w-full border"
-      onClick={() => navigate("/books/details")}
+      onClick={() => navigate(`/books/${book.book.bookno}`, { state: book })}
     >
       <a className="block relative h-auto rounded overflow-hidden">
         <img
           alt="ecommerce"
           className="object-cover object-center w-full h-full block"
-          src="https://www.dramaticpublishing.com/media/catalog/product/cache/1/image/300x436/9df78eab33525d08d6e5fb8d27136e95/j/u/jungle_book_cover_j24000.jpg"
+          src={book.book.image}
         />
       </a>
       <div className="mt-4">
