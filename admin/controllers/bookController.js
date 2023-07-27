@@ -4,8 +4,8 @@ const Book = require("../models/bookModel");
 // @route   POST /api/auth/book/add
 // @access  Private
 const addBook = async (req, res) => {
-    const { bookname, author, price, stock } = req.body;
-    const bookno = bookname.substring(0, 3) + Math.floor(Math.random() * 10000);
+    const { bookname, author, price, stock, image, views } = req.body;
+    const bookno = bookname.substring(0, 3).toUpperCase() + Math.floor(Math.random() * 10000);
 
     const bookExists = await Book.findOne({ bookno });
     if (bookExists) {
@@ -13,7 +13,7 @@ const addBook = async (req, res) => {
         return;
     }
     
-    const book = await Book.create({ bookno, bookname, author, price, stock });
+    const book = await Book.create({ bookno, bookname, author, price, stock, image, views });
     if(book){
         res.status(201).json({
             _id: book._id,
@@ -54,6 +54,7 @@ const updateBook = async (req, res) => {
         book.author = req.body.author || book.author;
         book.price = req.body.price || book.price;
         book.stock = req.body.stock || book.stock;
+        book.image = req.body.image || book.image;
 
         const updatedBook = await book.save();
         res.json({
@@ -62,6 +63,7 @@ const updateBook = async (req, res) => {
             bookname: updatedBook.bookname,
             price: updatedBook.price,
             stock: updatedBook.stock,
+            image: updatedBook.image,
         });
     } else {
         res.status(404).json({ msg: 'Book not found' });

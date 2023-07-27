@@ -15,13 +15,7 @@ const getBookByName = async (req, res) => {
     //get book by part of name
     const bookname = req.params.bookname;
     const books = await Book.find({ bookname: { $regex: bookname, $options: 'i' } });
-    res.status(200).json({
-        bookno: books.bookno,
-        bookname: books.bookname,
-        author: books.author,
-        price: books.price,
-        stock: books.stock,
-    });
+    res.status(200).json(books);
 }
 
 

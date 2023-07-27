@@ -21,6 +21,13 @@ const bookSchema = new mongoose.Schema({
     stock:{
         type: Number,
         required: true,
+    },
+    views:{
+        type: Number,
+    },
+    image:{
+        type: String,
+        required: true,
     }
 });
 
