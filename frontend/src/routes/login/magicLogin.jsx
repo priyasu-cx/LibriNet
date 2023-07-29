@@ -13,7 +13,6 @@ const MagicLoginCallback = () => {
   const [magiclogin] = useMagicloginMutation();
 
   const verifyToken = async (token) => {
-    console.log(token);
     try {
       const res = await magiclogin({ token }).unwrap();
       dispatch(setCredentials({ ...res.user }));

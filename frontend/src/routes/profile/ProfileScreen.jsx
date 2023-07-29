@@ -62,11 +62,12 @@ const ProfileScreen = () => {
   return (
     <>
       {/* Profile */}
-      <div className="flex items-center justify-center h-full lg:m-20 mt-10">
-        <div className="border-b-2 block md:flex md:w-full lg:w-2/3">
-          <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+      <div className="h-full bg-book-cover">
+      <div className="flex items-center justify-center h-full lg:p-20 pt-10 m-5">
+        <div className="rounded-xl block md:flex md:w-full lg:w-2/3">
+          <div className="block border-2 rounded-xl w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-lg">
             <div className="flex justify-between gap-5">
-              <span className="text-2xl font-semibold block">Welcome</span>
+              <span className="text-4xl font-semibold block font-Unica">Welcome</span>
               <button
                 className={c(
                   "text-md font-bold text-white  rounded-full p-4",
@@ -84,18 +85,21 @@ const ProfileScreen = () => {
                 {editing ? <FaCheck /> : <FaEdit />}
               </button>
             </div>
-            <span className="text-xl text-center overflow-clip">
+            <span className="text-3xl text-center overflow-clip font-bold">
               {userInfo.name == "Anonymous"
                 ? "Anonymous User"
                 : userInfo.name.toUpperCase()}
             </span>
-            <div className="flex items-center justify-center p-10">
-              <img className="w-32" src="https://i.imgur.com/hlA8DEP.png" />
+            <div className="flex items-center justify-center p-20">
+                <img
+                  className="rounded-full border-2 border-yellow-primary p-4 shadow-lg bg-gray-100"
+                  src="https://i.imgur.com/gc63Fn8.png"
+                />      
             </div>
           </div>
 
-          <div className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
-            <div className="rounded  shadow p-6">
+          <div className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-lg rounded-xl border">
+            <div className="rounded-xl  border-2 bg-gray-100 p-6">
               <div className="pb-6">
                 <label
                   htmlFor="name"
@@ -198,8 +202,9 @@ const ProfileScreen = () => {
           </div>
         </div>
       </div>
+      
       {/* Logout Button */}
-      <section className="flex items-center justify-center m-5">
+      <section className="flex items-center justify-center p-5">
         <button
           className="px-4 py-2 bg-yellow-primary text-black rounded-lg shadow-md hover:bg-red-600 focus:outline-none"
           onClick={handleLogout}
@@ -207,6 +212,7 @@ const ProfileScreen = () => {
           Logout
         </button>
       </section>
+      </div>
     </>
   );
 };
