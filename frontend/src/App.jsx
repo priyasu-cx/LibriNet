@@ -11,6 +11,7 @@ import MagicLoginCallback from "./routes/login/magicLogin";
 import ProfileScreen from "./routes/profile/ProfileScreen";
 import BookGallery from "./routes/books/BookGallery";
 import BookDetails from "./routes/books/components/BookDetails";
+import CartScreen from "./routes/cart/CartScreen";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/" exact Component={Home}/>
           <Route path="/login" exact Component={LoginScreen}/>
           <Route path="/profile" exact Component={ProfileScreen}/>
+          <Route path="/cart" exact Component={CartScreen}/>
           <Route path="/books" exact Component={BookGallery}/>
           <Route path="/books/:bookno" exact Component={BookDetails}/>
           <Route path="/magiclogin" exact Component={MagicLoginCallback}/>
