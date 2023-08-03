@@ -19,9 +19,15 @@ const userSchema = new mongoose.Schema({
         ref: 'Order',
     }],
     cart: [{
-        type: String,
-        ref: 'Book',
-    }],
+        bookno: {
+            type: String,
+            ref: 'Book',
+            unique: true,
+        },
+        quantity: {
+            type: Number,
+        },
+    } || null],
     wishlist: [{
         type: String,
         ref: 'Book',

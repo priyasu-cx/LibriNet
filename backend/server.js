@@ -39,4 +39,4 @@ app.use('/api/auth', authRouter);
 
 app.use('/api/books', bookRouter);
 
-app.use('/api/', orderRouter);
+app.use('/api/orders', orderRouter);
