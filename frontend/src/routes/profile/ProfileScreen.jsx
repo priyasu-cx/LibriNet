@@ -112,7 +112,7 @@ const ProfileScreen = () => {
                     disabled={!editing}
                     id="name"
                     className={c(
-                      "border-1  rounded-lg px-4 py-2 w-full",
+                      "border-1  rounded-lg px-4 py-2 w-full outline-1",
                       editing ? "bg-gray-200" : "bg-gray"
                     )}
                     type="text"
