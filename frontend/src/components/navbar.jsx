@@ -66,13 +66,13 @@ const Navbar = () => {
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                    {userInfo.cart.length}
+                    {userInfo.wishlist.length}
                   </div>
                   <FaRegHeart className="text-gray-400" size={20} />
                 </li>
                 <li className="ml-2 lg:ml-4 relative inline-block">
                   <div className="absolute -top-3 right-0 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">
-                    {userInfo.wishlist.length}
+                    {userInfo.cart.length}
                   </div>
                   <a href="\cart"><MdOutlineShoppingCart className="text-gray-400" size={20} /></a>
                 </li>
